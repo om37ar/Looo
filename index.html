@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>حب ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    direction: rtl;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+}
+
+/* الشريط العلوي */
+.top-bar {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.85);
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e91e63;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+/* البطاقة */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 300px;
+}
+
+h2 {
+    color: #e91e63;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #e91e63;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:enabled {
+    background: #c2185b;
+}
+
+/* القلب */
+.heart {
+    font-size: 30px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">من إعداد عمر</div>
+
+<div class="card">
+    <div class="heart">💖</div>
+    <h2>اكتب اسمين للحب</h2>
+
+    <input type="text" id="name1" placeholder="اسم الشخص الأول" oninput="check()">
+    <input type="text" id="name2" placeholder="اسم الشخص الثاني" oninput="check()">
+
+    <button id="btn" disabled onclick="go()">ذهاب ❤️</button>
+</div>
+
+<script>
+function check() {
+    const n1 = document.getElementById("name1").value.trim();
+    const n2 = document.getElementById("name2").value.trim();
+    document.getElementById("btn").disabled = !(n1 && n2);
+}
+
+function go() {
+    const name1 = document.getElementById("name1").value;
+    const name2 = document.getElementById("name2").value;
+
+    localStorage.setItem("name1", name1);
+    localStorage.setItem("name2", name2);
+
+    window.location.href = "heart.html";
+}
+</script>
+
+</body>
+</html>
