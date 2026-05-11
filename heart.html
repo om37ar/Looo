@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>قلب الحب 💖</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    overflow:hidden;
+    font-family:Arial;
+    direction:rtl;
+}
+
+/* العنوان */
+.title{
+    margin-bottom:40px;
+    font-size:28px;
+    color:#d81b60;
+    font-weight:bold;
+    text-shadow:0 0 10px rgba(255,255,255,0.7);
+}
+
+/* حاوية القلب */
+.heart-container{
+    position:relative;
+    width:320px;
+    height:320px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* القلب */
+.heart{
+    position:absolute;
+    width:200px;
+    height:200px;
+    background:#ff2e63;
+    transform:rotate(-45deg);
+    animation:beat 1s infinite;
+    box-shadow:0 0 30px rgba(255,0,80,0.7);
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:200px;
+    height:200px;
+    background:#ff2e63;
+    border-radius:50%;
+}
+
+.heart::before{
+    top:-100px;
+    left:0;
+}
+
+.heart::after{
+    left:100px;
+    top:0;
+}
+
+/* الأسماء */
+.names{
+    position:absolute;
+    z-index:10;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+    line-height:1.8;
+    width:220px;
+}
+
+/* رسالة الحب */
+.love-message{
+    margin-top:15px;
+    font-size:15px;
+    color:white;
+    text-shadow:0 0 10px rgba(255,255,255,0.8);
+    line-height:1.7;
+    animation:glow 2s infinite alternate;
+}
+
+/* نبض القلب */
+@keyframes beat{
+
+    0%{
+        transform:rotate(-45deg) scale(1);
+    }
+
+    50%{
+        transform:rotate(-45deg) scale(1.1);
+    }
+
+    100%{
+        transform:rotate(-45deg) scale(1);
+    }
+}
+
+/* لمعان الرسالة */
+@keyframes glow{
+
+    from{
+        opacity:0.7;
+        transform:scale(1);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.05);
+    }
+}
+
+/* الورود */
+.rose{
+    position:absolute;
+    top:-50px;
+    font-size:25px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="title">
+    💖 حب حقيقي بين قلبين 💖
+</div>
+
+<div class="heart-container">
+
+    <div class="heart"></div>
+
+    <div class="names">
+
+        <div id="names"></div>
+
+        <div class="love-message">
+            أحبك أكثر من أي شيء في هذا العالم 💖<br>
+            وستبقى دائمًا أجمل نبضة في قلبي 💞
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* جلب الأسماء */
+const n1 = localStorage.getItem("name1") || "الاسم الأول";
+const n2 = localStorage.getItem("name2") || "الاسم الثاني";
+
+/* عرض الأسماء */
+document.getElementById("names").innerHTML =
+`${n1}<br>💞<br>${n2}`;
+
+/* ورود متساقطة */
+for(let i=0;i<15;i++){
+
+    let rose = document.createElement("div");
+
+    rose.className = "rose";
+
+    rose.innerHTML = "🌹";
+
+    rose.style.left = Math.random()*100 + "vw";
+
+    rose.style.animationDuration =
+    (3 + Math.random()*5) + "s";
+
+    document.body.appendChild(rose);
+}
+
+</script>
+
+</body>
+</html>
